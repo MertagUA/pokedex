@@ -11,6 +11,9 @@ export const ItemStyled = styled.li`
   border-radius: 30px;
   background-color: ${theme.color.teal};
   padding-bottom: 10px;
+  :hover {
+    scale: 1.05;
+  }
 `;
 
 export const TypesWrapper = styled.div`

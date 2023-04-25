@@ -12,4 +12,5 @@ export const Button = styled.button`
   :active {
     scale: 1.07;
   }
+  cursor: pointer;
 `;

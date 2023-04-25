@@ -25,4 +25,5 @@ export const Button = styled.button`
   border-radius: 15px;
   background-color: ${theme.color.red};
   box-shadow: ${theme.boxShadow};
+  cursor: pointer;
 `;
