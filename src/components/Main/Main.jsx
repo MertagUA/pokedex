@@ -24,6 +24,7 @@ export const Main = () => {
         if (type) {
           const pokemonsByType = await fetchPokemonsByType(type);
           setPokemons(pokemonsByType);
+
           dispatch(setIsLoading(false));
           return;
         }
