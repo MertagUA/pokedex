@@ -8,13 +8,16 @@ import { useDispatch } from 'react-redux';
 import { theme } from 'utils/theme';
 import { Modal } from 'components/Modal/Modal';
 import { setIsLoading } from 'redux/Slices/isLoadingSlice';
+import { setIsActiveButton } from 'redux/Slices/isActiveButtonSlice';
+import { Spinner } from 'components/Spinners/Spinner';
 
 export const Main = () => {
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState(null);
   const [pokemonInfo, setPokemonInfo] = useState({});
   const [pokemonQuantity, setPokemonQuantity] = useState(0);
   const [type, setType] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -32,10 +35,13 @@ export const Main = () => {
           const pokemonsData = await fetchPokemonName(pokemonQuantity);
           setPokemons(pokemonsData);
           dispatch(setIsLoading(false));
+          dispatch(setIsActiveButton(''));
           return;
         }
+        setLoadingMore(true);
         const pokemonsData = await fetchPokemonName(pokemonQuantity);
         setPokemons(prevState => [...prevState, ...pokemonsData]);
+        setLoadingMore(false);
       } catch (error) {
         console.log(error);
       }
@@ -65,20 +71,31 @@ export const Main = () => {
   };
 
   const onLoadMoreButtonClick = () => {
+    if (pokemonQuantity >= 1010) {
+      return alert('We dont have pokemons anymore');
+    }
     setPokemonQuantity(prevState => prevState + 12);
   };
 
   return (
     <MainStyled>
       <Filter onTypeButtonClick={onTypeButtonClick} newType={type} />
-      <MainWrapper>
-        <List pokemons={pokemons} onPokemonCardClick={onPokemonCardClick} />
-        {!type && (
-          <Button type="button" onClick={onLoadMoreButtonClick}>
-            Load More
-          </Button>
-        )}
-      </MainWrapper>
+      {!pokemons ? (
+        <Spinner />
+      ) : (
+        <MainWrapper>
+          <List pokemons={pokemons} onPokemonCardClick={onPokemonCardClick} />
+          {!type && (
+            <Button
+              type="button"
+              onClick={onLoadMoreButtonClick}
+              disabled={loadingMore}
+            >
+              Load More
+            </Button>
+          )}
+        </MainWrapper>
+      )}
       {showModal && (
         <Modal onCloseModal={onCloseModal} pokemonInfo={pokemonInfo} />
       )}

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+// import { media } from 'utils/mediaQueries';
 import { theme } from 'utils/theme';
 
 export const MainStyled = styled.main`

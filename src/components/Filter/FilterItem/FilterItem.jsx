@@ -1,13 +1,16 @@
 import { setIsLoading } from 'redux/Slices/isLoadingSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { pokemonTypesColors } from 'utils/pokemonTypes';
-import { Spinner } from 'components/Spinner/Spinner';
+import { Spinner } from 'components/Spinners/Spinner';
 import { setColor } from 'redux/Slices/headerColorSlice';
 import { Button } from './FilterItem.styled';
+import { setIsActiveButton } from 'redux/Slices/isActiveButtonSlice';
 
 export const FilterItem = ({ type, onTypeButtonClick, newType }) => {
   const dispatch = useDispatch();
-  const { isLoading } = useSelector(state => state);
+  const { isLoading, isActiveButton } = useSelector(state => state);
+  const clickedButton = newType === type.toLowerCase();
+
   return (
     <li key={type}>
       <Button
@@ -16,11 +19,14 @@ export const FilterItem = ({ type, onTypeButtonClick, newType }) => {
           dispatch(setIsLoading(true));
           dispatch(setColor(pokemonTypesColors[type]));
           onTypeButtonClick(type);
+          dispatch(setIsActiveButton('active'));
         }}
         style={{ backgroundColor: pokemonTypesColors[type] }}
+        className={clickedButton && isActiveButton}
+        disabled={isLoading}
       >
         {type}
-        {isLoading && newType === type.toLowerCase() && <Spinner />}
+        {isLoading && clickedButton && <Spinner />}
       </Button>
     </li>
   );

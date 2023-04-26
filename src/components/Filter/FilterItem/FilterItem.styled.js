@@ -13,4 +13,8 @@ export const Button = styled.button`
     scale: 1.07;
   }
   cursor: pointer;
+  &.active {
+    color: white;
+    border: 1px solid ${theme.color.red};
+  }
 `;

@@ -12,6 +12,7 @@ export const ItemStyled = styled.li`
   background-color: ${theme.color.teal};
   padding-bottom: 10px;
   :hover {
+    cursor: pointer;
     scale: 1.05;
   }
 `;
