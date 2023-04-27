@@ -1,7 +1,6 @@
 import { setIsLoading } from 'redux/Slices/isLoadingSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { pokemonTypesColors } from 'utils/pokemonTypes';
-import { Spinner } from 'components/Spinners/Spinner';
 import { setColor } from 'redux/Slices/headerColorSlice';
 import { Button } from './FilterItem.styled';
 import { setIsActiveButton } from 'redux/Slices/isActiveButtonSlice';
@@ -26,7 +25,6 @@ export const FilterItem = ({ type, onTypeButtonClick, newType }) => {
         disabled={isLoading}
       >
         {type}
-        {isLoading && clickedButton && <Spinner />}
       </Button>
     </li>
   );

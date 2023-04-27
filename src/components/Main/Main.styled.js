@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-// import { media } from 'utils/mediaQueries';
 import { theme } from 'utils/theme';
 
 export const MainStyled = styled.main`
+  position: relative;
   margin: 0 auto;
   padding: 20px 0;
 `;
@@ -12,7 +12,7 @@ export const MainWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 1280px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 15px;
 `;

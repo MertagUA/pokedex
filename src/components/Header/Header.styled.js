@@ -2,8 +2,10 @@ import styled from '@emotion/styled';
 import { theme } from 'utils/theme';
 
 export const HeaderStyled = styled.header`
-  width: 1280px;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
+  max-width: 1280px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   border-left: ${theme.border};
@@ -15,4 +17,9 @@ export const HeaderStyled = styled.header`
 export const Title = styled.h1`
   text-align: center;
   padding: 10px 0;
+`;
+
+export const TitleWrapper = styled.div`
+  position: relative;
+  width: 200px;
 `;

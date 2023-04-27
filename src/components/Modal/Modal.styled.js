@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { media } from 'utils/mediaQueries';
 import { theme } from 'utils/theme';
 
 export const Overlay = styled.div`
@@ -17,6 +18,9 @@ export const Overlay = styled.div`
 export const ModalStyled = styled.div`
   display: flex;
   justify-content: center;
+  ${media.mobileMax} {
+    width: 300px;
+  }
   width: 400px;
   height: 400px;
   background-color: ${theme.color.teal};

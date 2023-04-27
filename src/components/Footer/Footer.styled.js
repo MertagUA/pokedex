@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { theme } from 'utils/theme';
 
 export const FooterStyled = styled.footer`
-  width: 1280px;
+  max-width: 1280px;
   margin: 0 auto;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;

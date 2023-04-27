@@ -1,5 +1,5 @@
 export const media = {
-  mobile: '@media (min-width: 320px)',
+  mobileMax: '@media (max-width: 767px)',
   tablet: '@media (min-width: 768px)',
-  desktop: '@media (min-width: 1024px)',
+  modal: '@media (max-width: 420px)',
 };
